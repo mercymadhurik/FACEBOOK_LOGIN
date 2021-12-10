@@ -1,0 +1,19 @@
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+driver = webdriver.Chrome(executable_path="E:\\PycharmProjects\\SeleniumProject6\\Browsers\\chromedriver.exe")
+driver.get("https://www.google.com/")
+driver.maximize_window()
+driver.find_element_by_name("q").send_keys("Facebook login")
+driver.find_element_by_name("q").send_keys(Keys.ENTER)
+driver.find_element_by_partial_link_text("Facebook - Log In or Sign Up").click()
+driver.find_element_by_id("email").send_keys("enter your facebook email address")
+driver.find_element_by_id("pass").send_keys("enter your password")
+driver.find_element(By.XPATH,"//button[text()='Log In']").click()
+time.sleep(15)
+print(driver.title)
+print(driver.current_url)
+driver.close()
+print("facebook logged in successfully")
